@@ -3,18 +3,15 @@ export default function Header() {
     return (
         <header>
             <div className="nav-pc">
-                <a href="/">ComingSoon</a>
+                {/* <a href="/">ComingSoon</a> */}
                 <nav className="nav-bar-pc">
                     <div className="menu">
                         <ul>
                             <li>
-                                <a href="/">home</a>
+                                <a href="/">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="/">info</a>
-                            </li>
-                            <li>
-                                <a href="/">contact</a>
+                                <a href="/">Đăng nhập</a>
                             </li>
                         </ul>
                     </div>
@@ -32,17 +29,14 @@ export default function Header() {
                     <ul className="menu-mobile">
                         <div className="close_btn">
                             <label htmlFor="nav-mobile-input">
-                                <i className="fa fa-times" aria-hidden="true"></i>
+                            <i class="fa-solid fa-xmark"></i>
                             </label>
                         </div>
                         <li>
-                            <a href="/">home</a>
+                            <a href="/">Trang Chủ</a>
                         </li>
                         <li>
-                            <a href="/">info</a>
-                        </li>
-                        <li>
-                            <a href="/">contact</a>
+                            <a href="/">Đăng Nhập</a>
                         </li>
                     </ul>
                 </nav>

@@ -11,3 +11,4 @@ var countDown = setInterval(function () {
     document.getElementById('count').innerHTML = days + 'D ' + hours + 'H ' + minutes + 'M ' + seconds + 'S ';
     if (distance <= 0) clearInterval(countDown);
 }, 1000);
+

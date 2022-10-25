@@ -33,7 +33,7 @@ export default function ParticlesBackGround() {
                         events: {
                             onClick: {
                                 enable: true,
-                                mode: 'push',
+                                mode: 'repulse',
                             },
                             onHover: {
                                 enable: true,
@@ -88,7 +88,7 @@ export default function ParticlesBackGround() {
                                 default: 'bounce',
                             },
                             random: false,
-                            speed: 6,
+                            speed: 2,
                             straight: false,
                         },
                         number: {
