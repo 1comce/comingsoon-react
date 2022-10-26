@@ -11,7 +11,9 @@ export default function Header() {
                                 <a href="/">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="/">Đăng nhập</a>
+                                <a href="#" onClick={()=>{
+                    document.querySelector('.login-js').classList.add('open-popup')
+                }}>Đăng nhập</a>
                             </li>
                         </ul>
                     </div>
@@ -36,7 +38,10 @@ export default function Header() {
                             <a href="/">Trang Chủ</a>
                         </li>
                         <li>
-                            <a href="/">Đăng Nhập</a>
+                            <a href="#" onClick={()=>{
+                    document.querySelector('.login-js').classList.add('open-popup')
+                    document.getElementById("nav-mobile-input").checked = false;
+                }}>Đăng Nhập</a>
                         </li>
                     </ul>
                 </nav>
