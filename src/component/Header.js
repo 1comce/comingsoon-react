@@ -11,9 +11,14 @@ export default function Header() {
                                 <a href="/">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="#" onClick={()=>{
-                    document.querySelector('.login-js').classList.add('open-popup')
-                }}>Đăng nhập</a>
+                                <a
+                                    href="#"
+                                    onClick={() => {
+                                        document.querySelector('.login-js').classList.add('open-popup');
+                                    }}
+                                >
+                                    Đăng nhập
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -31,17 +36,22 @@ export default function Header() {
                     <ul className="menu-mobile">
                         <div className="close_btn">
                             <label htmlFor="nav-mobile-input">
-                            <i class="fa-solid fa-xmark"></i>
+                                <i className="fa-solid fa-xmark"></i>
                             </label>
                         </div>
                         <li>
                             <a href="/">Trang Chủ</a>
                         </li>
                         <li>
-                            <a href="#" onClick={()=>{
-                    document.querySelector('.login-js').classList.add('open-popup')
-                    document.getElementById("nav-mobile-input").checked = false;
-                }}>Đăng Nhập</a>
+                            <a
+                                href="#"
+                                onClick={() => {
+                                    document.querySelector('.login-js').classList.add('open-popup');
+                                    document.getElementById('nav-mobile-input').checked = false;
+                                }}
+                            >
+                                Đăng Nhập
+                            </a>
                         </li>
                     </ul>
                 </nav>
