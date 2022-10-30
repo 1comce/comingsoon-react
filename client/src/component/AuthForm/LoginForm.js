@@ -1,24 +1,32 @@
 import React from 'react';
-import { useState } from 'react';
+
+import { useRef, useState, useEffect, useContext } from 'react';
 export default function LoginForm() {
-    const [loginForm, setLoginForm] = useState({
-        username: '',
-        password: '',
-    });
-    const { username, password } = loginForm;
-    const onChangeLoginForm = (e) =>
-        setLoginForm({
-            ...loginForm,
-            [e.target.name]: e.target.value,
-        });
-    const login = async (e) => {
+    const userRef = useRef();
+    const errRef = useRef();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current?.focus();
+    }, []);
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [username, password]);
+    const handleSubmit = async (e) => {
         e.preventDefault();
     };
     return (
         <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-            <form onSubmit={login}>
+            <form onSubmit={handleSubmit}>
+                <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live="assertive">
+                    {errMsg}
+                </p>
                 <div className="text-center mb-3 ">
-                    <p className="dark-theme">Sign in with:</p>
+                    <p className="dark-theme font-2rem">Sign in with:</p>
                     <button type="button" className="btn btn-link btn-floating mx-1">
                         <i className="fab fa-facebook-f dark-theme font-15px"></i>
                     </button>
@@ -32,29 +40,33 @@ export default function LoginForm() {
                         <i className="fab fa-github dark-theme font-15px"></i>
                     </button>
                 </div>
-                <p className="text-center dark-theme">or:</p>
+                <p className="text-center dark-theme font-2rem">or:</p>
                 <div className="form-outline mb-4">
                     <label className="form-label dark-theme font-15px" htmlFor="loginName">
-                        Email or username
+                        Username:
                     </label>
                     <input
-                        type="email"
+                        type="email text"
                         id="loginName"
+                        ref={userRef}
+                        autoComplete="off"
+                        onChange={(e) => setUsername(e.target.value)}
                         className="form-control font-15px border-dark rounded"
                         value={username}
-                        onChange={onChangeLoginForm}
+                        required
                     />
                 </div>
                 <div className="form-outline mb-4">
                     <label className="form-label dark-theme font-15px" htmlFor="loginPassword">
-                        Password
+                        Password:
                     </label>
                     <input
                         type="password"
                         id="loginPassword"
                         className="form-control font-15px border-dark rounded"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
                         value={password}
-                        onChange={onChangeLoginForm}
                     />
                 </div>
                 <div className="row mb-4">
@@ -82,7 +94,8 @@ export default function LoginForm() {
                     Sign in
                 </button>
                 <div className="text-center">
-                    <p className="dark-theme">
+                    {/* react router */}
+                    <p className="dark-theme font-15px">
                         Not a member?{' '}
                         <a
                             href="#!"

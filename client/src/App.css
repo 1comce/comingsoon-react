@@ -75,12 +75,12 @@ header {
     letter-spacing: 20px;
     font-weight: 100;
 }
-hr {
+.content hr {
     margin: auto;
     width: 90%;
     border: 1.5px solid #fff;
 }
-p {
+.content p {
     font-weight: lighter;
     letter-spacing: 10px;
     font-size: 1.5rem;

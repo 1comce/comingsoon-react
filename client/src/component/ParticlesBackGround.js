@@ -79,7 +79,7 @@ export default function ParticlesBackGround() {
                             width: 0.5,
                         },
                         collisions: {
-                            enable: true,
+                            enable: false,
                         },
                         move: {
                             directions: 'none',
