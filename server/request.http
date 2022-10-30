@@ -1,0 +1,23 @@
+@hostname=http://localhost:5000
+
+get {{hostname}}
+
+
+###
+post {{hostname}}/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"6comce",
+    "password":"123"
+}
+
+###
+
+post {{hostname}}/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"6comce",
+    "password":"123"
+}

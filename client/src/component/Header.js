@@ -14,7 +14,7 @@ export default function Header() {
                                 <a
                                     href="#"
                                     onClick={() => {
-                                        document.querySelector('.login-js').classList.add('open-popup');
+                                        document.querySelector('.auth-form').classList.add('open-popup');
                                     }}
                                 >
                                     Đăng nhập
@@ -46,7 +46,7 @@ export default function Header() {
                             <a
                                 href="#"
                                 onClick={() => {
-                                    document.querySelector('.login-js').classList.add('open-popup');
+                                    document.querySelector('.auth-form').classList.add('open-popup');
                                     document.getElementById('nav-mobile-input').checked = false;
                                 }}
                             >

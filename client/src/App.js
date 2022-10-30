@@ -4,13 +4,13 @@ import Header from './component/Header';
 import ParticlesBackGround from './component/ParticlesBackGround';
 import Content from './component/Content';
 import Footer from './component/Footer';
-import LoginForm from './component/LoginForm';
+import AuthForm from './component/AuthForm/AuthForm';
 function App() {
     return (
         <div className="Container">
             <Header />
             <Content />
-            <LoginForm />
+            <AuthForm />
             <Footer />
             <ParticlesBackGround />
         </div>

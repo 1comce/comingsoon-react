@@ -85,7 +85,7 @@ p {
     letter-spacing: 10px;
     font-size: 1.5rem;
 }
-.login-js {
+.auth-form {
     position: absolute;
     width: 400px;
     height: fit-content;

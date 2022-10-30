@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCurrentDate } from '../utils/getCurrentDate';
-import { getCurrentTime } from '../utils/getCurrenTime';
 export default function Content() {
     const [time, setTime] = useState('');
 
