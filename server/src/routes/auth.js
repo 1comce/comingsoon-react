@@ -7,20 +7,23 @@ const argon2 = require('argon2');
 // @desc Register user
 // @access Public
 router.post('/register', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
     //validation
-    if (!username || !password)
+    if (!username || !password || !email)
         return res.status(400).json({
             success: false,
-            message: 'Missing username and/or password',
+            message: 'Missing username or password,email',
         });
     try {
         const user = await User.findOne({ username });
         if (user) return res.status(400).json({ success: false, message: 'Username already exist' });
+        const emailChecked = await User.findOne({ email });
+        if (emailChecked) return res.status(400).json({ success: false, message: 'Email already exist' });
         //all good
         const hashedPassword = await argon2.hash(password);
         const newUser = new User({
             username,
+            email,
             password: hashedPassword,
         });
         await newUser.save();

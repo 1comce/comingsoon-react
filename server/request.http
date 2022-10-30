@@ -8,7 +8,8 @@ post {{hostname}}/api/auth/register
 Content-Type: application/json
 
 {
-    "username":"6comce",
+    "username":"1comce",
+    "email":"mainvox9421@gmail.com",
     "password":"123"
 }
 
@@ -18,6 +19,6 @@ post {{hostname}}/api/auth/login
 Content-Type: application/json
 
 {
-    "username":"6comce",
+    "username":"1comce",
     "password":"123"
 }
