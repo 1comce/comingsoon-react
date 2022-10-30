@@ -58,8 +58,8 @@ export default function AuthForm() {
                         </li>
                     </ul>
                     <div className="tab-content">
-                        <LoginForm></LoginForm>
-                        <RegisterForm></RegisterForm>
+                        <LoginForm />
+                        <RegisterForm />
                     </div>
                 </div>
             </div>
