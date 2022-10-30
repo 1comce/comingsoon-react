@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+.dark-theme {
+    color: #333 !important;
+}
+#main {
+    position: relative;
+    min-height: inherit;
+    min-width: inherit;
+    text-align: center;
+}
+header {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+.nav-pc {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+.nav-pc a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.menu ul {
+    display: flex;
+}
+.menu ul li {
+    list-style: none;
+    padding-left: 7px;
+}
+.menu ul li a {
+    font-size: 1.8rem;
+    padding: 10px 20px;
+    display: block;
+}
+.menu ul li a:hover {
+    background: yellow;
+    color: #000;
+    transition: all 0.3 ease;
+}
+#particles-js {
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+}
+
+#content {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#content h1 {
+    font-size: 4rem;
+    letter-spacing: 20px;
+    font-weight: 100;
+}
+.content hr {
+    margin: auto;
+    width: 90%;
+    border: 1.5px solid #fff;
+}
+.content p {
+    font-weight: lighter;
+    letter-spacing: 10px;
+    font-size: 1.5rem;
+}
+.auth-form {
+    position: absolute;
+    width: 400px;
+    height: fit-content;
+    background: #fff;
+    border-radius: 6px;
+    z-index: 2;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    padding: 30px;
+    transition: transform 0.4s, top 0.4s;
+    visibility: hidden;
+}
+.float-right {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.font-2rem {
+    font-size: 2rem;
+}
+.font-15px {
+    font-size: 1.5rem;
+}
+.font-1rem {
+    font-size: 1rem;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+.nav-mobile {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: none;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform linear 0.2s, opacity linear 0.2s;
+}
+.nav-bar-mobile {
+    position: relative;
+    width: 200px;
+}
+.toggle {
+    font-size: 2rem;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    display: none;
+}
+.close_btn {
+    color: #333 !important;
+    text-align: right;
+    font-size: 2rem;
+    padding: 10px 10px;
+}
+.close_btn i {
+    color: #000;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    background: cover;
+    display: none;
+}
+.menu-mobile {
+    font-size: 2rem;
+    z-index: 2;
+    background-color: #fff;
+    color: #000;
+    min-height: 100vh;
+    text-align: center;
+    list-style: none;
+    border: 1px solid #fff;
+}
+.menu-mobile li {
+    padding-bottom: 10px;
+}
+.menu-mobile li a {
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+}
+.menu-mobile li:hover {
+    padding-left: 10px;
+    transition: ease 0.5s;
+    background-color: aqua;
+}
+
+.nav-input:checked ~ .overlay {
+    display: block;
+}
+.nav-input:checked ~ .nav-mobile {
+    transform: translateX(0%);
+    opacity: 1;
+}
+.footer {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    bottom: 5%;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 2rem;
+}
+.footer-menu {
+    display: flex;
+    flex-flow: wrap;
+    text-align: center;
+}
+.footer-menu a {
+    color: #fff;
+    font-size: 3rem;
+    padding-left: 10px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+.footer i {
+    padding-top: 20px;
+}
+@media screen and (max-width: 768px) {
+    .nav-pc {
+        flex-direction: column;
+        display: none;
+    }
+    .nav-mobile {
+        display: block;
+    }
+    .toggle {
+        display: block;
+    }
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
