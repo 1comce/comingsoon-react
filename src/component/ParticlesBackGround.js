@@ -1,9 +1,8 @@
-import React from 'react';
 import { useCallback } from 'react';
-import { Container, Engine } from 'tsparticles-engine';
+// import { Container, Engine } from 'tsparticles-engine';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-export default function ParticlesBackGround() {
+const ParticlesBackGround = () => {
     const particlesInit = useCallback(async (engine) => {
         console.log(engine);
         // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
@@ -113,4 +112,6 @@ export default function ParticlesBackGround() {
             />
         </div>
     );
-}
+};
+
+export default ParticlesBackGround;

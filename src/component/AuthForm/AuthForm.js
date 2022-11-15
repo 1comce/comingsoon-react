@@ -1,7 +1,14 @@
-import React from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-export default function AuthForm() {
+import useAuth from '../../hooks/useAuth';
+const AuthForm = () => {
+    const { auth } = useAuth();
+    let body = (
+        <>
+            <LoginForm />
+            <RegisterForm />
+        </>
+    );
     const authFormHandle = () => {
         document.querySelector('.auth-form').classList.remove('open-popup');
     };
@@ -57,12 +64,11 @@ export default function AuthForm() {
                             </a>
                         </li>
                     </ul>
-                    <div className="tab-content">
-                        <LoginForm />
-                        <RegisterForm />
-                    </div>
+                    <div className="tab-content">{body}</div>
                 </div>
             </div>
         </div>
     );
-}
+};
+
+export default AuthForm;

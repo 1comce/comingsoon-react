@@ -1,7 +1,6 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCurrentDate } from '../utils/getCurrentDate';
-export default function Content() {
+const Content = () => {
     const [time, setTime] = useState('');
 
     // Logic, computation to update time (which is side-effect) should put inside useEffect
@@ -25,4 +24,5 @@ export default function Content() {
             <p className="font-2rem">{time}</p>
         </div>
     );
-}
+};
+export default Content;

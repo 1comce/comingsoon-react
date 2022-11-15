@@ -1,13 +1,14 @@
-import React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import './AuthStyles.css';
+import axios from '../../api/axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-export default function RegisterForm() {
+const RegisterForm = () => {
     const userRef = useRef();
     const errRef = useRef();
 
+    const [registerCheck, setRegisterCheck] = useState(false);
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(false);
     const [usernameFocus, setUsernameFocus] = useState(false);
@@ -54,8 +55,31 @@ export default function RegisterForm() {
             setErrMsg('Invalid Entry');
             return;
         }
-        console.log(username, password);
-        setSuccess(true);
+        try {
+            const response = await axios.post(
+                '/auth/register',
+                JSON.stringify({
+                    username,
+                    email,
+                    password,
+                }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true,
+                },
+            );
+            setSuccess(true);
+            //clear input fields
+        } catch (error) {
+            if (!error?.response) {
+                setErrMsg('No server response');
+            } else if (error.response?.status) {
+                setErrMsg(error.response.data.message);
+            } else {
+                setErrMsg('Registeration failed');
+            }
+            errRef.current?.focus();
+        }
     };
     return (
         <div className="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
@@ -63,7 +87,7 @@ export default function RegisterForm() {
                 //Route
                 <section>
                     <h1 className="dark-theme align-item-center">Success!</h1>
-                    <p>
+                    <p className="font-15px">
                         <a
                             href="#pills-login"
                             onClick={() => {
@@ -120,7 +144,7 @@ export default function RegisterForm() {
                             id="uidnote"
                             className={usernameFocus && username && !validUsername ? 'instructions' : 'offscreen'}
                         >
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <i className="fa fa-info-circle" aria-hidden="true"></i>
                             4 to 24 characters.
                             <br />
                             Must begin with a letter.
@@ -153,7 +177,7 @@ export default function RegisterForm() {
                             className="form-control font-15px border-dark rounded"
                         />
                         <p id="emailnote" className={emailFocus && email && !validEmail ? 'instructions' : 'offscreen'}>
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <i className="fa fa-info-circle" aria-hidden="true"></i>
                             Must be a valid email example@example.com
                         </p>
                     </div>
@@ -179,7 +203,7 @@ export default function RegisterForm() {
                             className="form-control font-15px border-dark rounded"
                         />
                         <p id="pwdnote" className={passwordFocus && !validPassword ? 'instructions' : 'offscreen'}>
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <i className="fa fa-info-circle" aria-hidden="true"></i>
                             8 to 24 characters.
                             <br />
                             Must include uppercase and lowercase letters, a number and a special character.
@@ -214,7 +238,7 @@ export default function RegisterForm() {
                             id="confirmnote"
                             className={matchFocus && !validMatch && matchPassword ? 'instructions' : 'offscreen'}
                         >
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <i className="fa fa-info-circle" aria-hidden="true"></i>
                             Must match the first password input field.
                         </p>
                     </div>
@@ -223,6 +247,9 @@ export default function RegisterForm() {
                             className="form-check-input me-2 font-15px border-dark rounded"
                             type="checkbox"
                             value=""
+                            onChange={(e) => {
+                                setRegisterCheck(!registerCheck);
+                            }}
                             id="registerCheck"
                             aria-describedby="registerCheckHelpText"
                         />
@@ -230,11 +257,16 @@ export default function RegisterForm() {
                             I have read and agree to the terms
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary btn-block mb-3 font-15px">
+                    <button
+                        disabled={!validUsername || !validPassword || !validMatch || !registerCheck ? true : false}
+                        type="submit"
+                        className="btn btn-primary btn-block mb-3 font-15px"
+                    >
                         Sign up
                     </button>
                 </form>
             )}
         </div>
     );
-}
+};
+export default RegisterForm;

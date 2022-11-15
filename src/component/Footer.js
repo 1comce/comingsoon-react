@@ -1,5 +1,4 @@
-import React from 'react';
-export default function Footer() {
+const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-menu row">
@@ -9,4 +8,5 @@ export default function Footer() {
             </div>
         </div>
     );
-}
+};
+export default Footer;

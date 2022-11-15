@@ -1,5 +1,15 @@
-import React from 'react';
-export default function Header() {
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import useLogout from '../hooks/useLogout';
+const Header = () => {
+    const { auth } = useAuth();
+    const navigate = useNavigate();
+    const logout = useLogout();
+    const signout = async () => {
+        await logout();
+        navigate('/');
+        window.location.reload();
+    };
     return (
         <header>
             <div className="nav-pc">
@@ -10,16 +20,25 @@ export default function Header() {
                             <li>
                                 <a href="/">Trang chủ</a>
                             </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    onClick={() => {
-                                        document.querySelector('.auth-form').classList.add('open-popup');
-                                    }}
-                                >
-                                    Đăng nhập
-                                </a>
-                            </li>
+                            {auth.username ? (
+                                <li className="font-2rem float-right">
+                                    <span>{auth.username}</span>
+                                    <button className="mx-2" onClick={signout}>
+                                        LOG OUT
+                                    </button>
+                                </li>
+                            ) : (
+                                <li>
+                                    <a
+                                        href="#"
+                                        onClick={() => {
+                                            document.querySelector('.auth-form').classList.add('open-popup');
+                                        }}
+                                    >
+                                        Đăng nhập
+                                    </a>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </nav>
@@ -29,6 +48,7 @@ export default function Header() {
                 <label htmlFor="nav-mobile-input">
                     <i className="fa-solid fa-bars"></i>
                 </label>
+                {auth.username ? <span className="font-2rem float-right">{auth.username}</span> : <span></span>}
             </div>
             <label className="overlay" htmlFor="nav-mobile-input"></label>
             <div className="nav-mobile">
@@ -39,23 +59,32 @@ export default function Header() {
                                 <i className="fa-solid fa-xmark"></i>
                             </label>
                         </div>
-                        <li>
-                            <a href="/">Trang Chủ</a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                onClick={() => {
-                                    document.querySelector('.auth-form').classList.add('open-popup');
-                                    document.getElementById('nav-mobile-input').checked = false;
-                                }}
-                            >
-                                Đăng Nhập
-                            </a>
-                        </li>
+                        {!auth.username ? (
+                            <>
+                                <li>
+                                    <a href="/">Trang Chủ</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        onClick={() => {
+                                            document.querySelector('.auth-form').classList.add('open-popup');
+                                            document.getElementById('nav-mobile-input').checked = false;
+                                        }}
+                                    >
+                                        Đăng Nhập
+                                    </a>
+                                </li>
+                            </>
+                        ) : (
+                            <li>
+                                <a href="/">Trang Chủ</a>
+                            </li>
+                        )}
                     </ul>
                 </nav>
             </div>
         </header>
     );
-}
+};
+export default Header;
