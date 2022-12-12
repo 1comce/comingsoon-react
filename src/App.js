@@ -3,12 +3,15 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './component/Header';
 import ParticlesBackGround from './component/ParticlesBackGround';
-import Content from './component/Content';
+import Content from './component/Content/Content';
 import Footer from './component/Footer';
 import AuthForm from './component/AuthForm/AuthForm';
 import Layout from './component/Layout';
 import Missing from './component/Missing';
 import PersistLogin from './component/PersistLogin';
+import RequireAuth from './component/RequireAuth';
+import Test from './component/Test';
+
 function App() {
     return (
         <Routes>
@@ -27,7 +30,11 @@ function App() {
                             </>
                         }
                     />
+                    <Route element={<RequireAuth />}>
+                        <Route path="/testing" element={<Test></Test>} />
+                    </Route>
                 </Route>
+
                 {/* Catch all route */}
                 <Route path="*" element={<Missing></Missing>} />
             </Route>

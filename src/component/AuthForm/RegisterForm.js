@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import './AuthStyles.css';
-import axios from '../../api/axios';
+import axiosPublic from '../../api/axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -56,7 +56,7 @@ const RegisterForm = () => {
             return;
         }
         try {
-            const response = await axios.post(
+            const response = await axiosPublic.post(
                 '/auth/register',
                 JSON.stringify({
                     username,
@@ -194,6 +194,7 @@ const RegisterForm = () => {
                         <input
                             type="password"
                             id="password"
+                            autoComplete="off"
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             aria-invalid={validPassword ? 'false' : 'true'}
@@ -226,6 +227,7 @@ const RegisterForm = () => {
                         <input
                             type="password"
                             id="RepeatPassword"
+                            autoComplete="off"
                             onChange={(e) => setMatchPassword(e.target.value)}
                             required
                             aria-invalid={validMatch ? 'false' : 'true'}

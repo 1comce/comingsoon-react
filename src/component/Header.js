@@ -8,7 +8,7 @@ const Header = () => {
     const signout = async () => {
         await logout();
         navigate('/');
-        window.location.reload();
+        // window.location.reload();
     };
     return (
         <header>
@@ -20,24 +20,31 @@ const Header = () => {
                             <li>
                                 <a href="/">Trang chủ</a>
                             </li>
-                            {auth.username ? (
-                                <li className="font-2rem float-right">
-                                    <span>{auth.username}</span>
-                                    <button className="mx-2" onClick={signout}>
-                                        LOG OUT
-                                    </button>
-                                </li>
+                            {auth.accessToken ? (
+                                <>
+                                    <li>
+                                        <a href="/testing">Dash Board</a>
+                                    </li>
+                                    <li className="font-2rem float-right">
+                                        <span>{auth.username}</span>
+                                        <button className="mx-2" onClick={signout}>
+                                            LOG OUT
+                                        </button>
+                                    </li>
+                                </>
                             ) : (
-                                <li>
-                                    <a
-                                        href="#"
-                                        onClick={() => {
-                                            document.querySelector('.auth-form').classList.add('open-popup');
-                                        }}
-                                    >
-                                        Đăng nhập
-                                    </a>
-                                </li>
+                                <>
+                                    <li>
+                                        <a
+                                            href="#"
+                                            onClick={() => {
+                                                document.querySelector('.auth-form').classList.add('open-popup');
+                                            }}
+                                        >
+                                            Đăng nhập
+                                        </a>
+                                    </li>
+                                </>
                             )}
                         </ul>
                     </div>
@@ -59,7 +66,7 @@ const Header = () => {
                                 <i className="fa-solid fa-xmark"></i>
                             </label>
                         </div>
-                        {!auth.username ? (
+                        {!auth.accessToken ? (
                             <>
                                 <li>
                                     <a href="/">Trang Chủ</a>
@@ -77,9 +84,14 @@ const Header = () => {
                                 </li>
                             </>
                         ) : (
-                            <li>
-                                <a href="/">Trang Chủ</a>
-                            </li>
+                            <>
+                                <li>
+                                    <a href="/">Trang Chủ</a>
+                                </li>
+                                <li>
+                                    <a href="/testing">Dash Board</a>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </nav>
