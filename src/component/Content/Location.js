@@ -24,17 +24,7 @@ const Location = () => {
                     },
                 )
                 .then((response) => setState(response.data.results[1].formatted_address))
-                .catch((error) =>
-                    fetch(
-                        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_API_KEY}`,
-                    )
-                        .then((response) => response.json())
-                        .then((data) => {
-                            setState(data.results[1].formatted_address);
-                            console.log(data.results);
-                        })
-                        .catch((error) => alert(error.message)),
-                );
+                .catch((error) => alert(error.message));
         };
         const handleError = (error) => {
             const { code } = error;

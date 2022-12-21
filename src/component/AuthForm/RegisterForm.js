@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import './AuthStyles.css';
 import axiosPublic from '../../api/axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -89,7 +88,7 @@ const RegisterForm = () => {
                     <h1 className="dark-theme align-item-center">Success!</h1>
                     <p className="font-15px">
                         <a
-                            href="#pills-login"
+                            // href="#pills-login"
                             onClick={() => {
                                 document.querySelector('#tab-login').classList.add('active');
                                 document.querySelector('#tab-register').classList.remove('active');

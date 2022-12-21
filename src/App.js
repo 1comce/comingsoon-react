@@ -10,7 +10,7 @@ import Layout from './component/Layout';
 import Missing from './component/Missing';
 import PersistLogin from './component/PersistLogin';
 import RequireAuth from './component/RequireAuth';
-import Test from './component/Test';
+import DashBoard from './component/Test/DashBoard';
 
 function App() {
     return (
@@ -31,7 +31,7 @@ function App() {
                         }
                     />
                     <Route element={<RequireAuth />}>
-                        <Route path="/testing" element={<Test></Test>} />
+                        <Route path="/dashboard" element={<DashBoard></DashBoard>} />
                     </Route>
                 </Route>
 

@@ -73,10 +73,11 @@ const Header = () => {
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        // href=""
                                         onClick={() => {
                                             document.querySelector('.auth-form').classList.add('open-popup');
                                             document.getElementById('nav-mobile-input').checked = false;
+                                            document.getElementById('auth-checked-input').checked = true;
                                         }}
                                     >
                                         Đăng Nhập

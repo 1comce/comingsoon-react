@@ -22,7 +22,7 @@ body {
 }
 header {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
 }
 .nav-pc {
@@ -85,20 +85,7 @@ header {
     letter-spacing: 10px;
     font-size: 1.5rem;
 }
-.auth-form {
-    position: absolute;
-    width: 400px;
-    height: fit-content;
-    background: #fff;
-    border-radius: 6px;
-    z-index: 2;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.1);
-    padding: 30px;
-    transition: transform 0.4s, top 0.4s;
-    visibility: hidden;
-}
+
 .float-right {
     position: absolute;
     right: 10px;
@@ -114,11 +101,6 @@ header {
     font-size: 1rem;
 }
 
-.open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-}
 .nav-mobile {
     position: absolute;
     top: 0;
@@ -191,7 +173,7 @@ header {
 }
 .footer {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
     bottom: 5%;
     right: 50%;
