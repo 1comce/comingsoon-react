@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/1comce/comingsoon-react/static/css/main.3d2ceda7.css",
-    "main.js": "/1comce/comingsoon-react/static/js/main.809f3056.js",
+    "main.js": "/1comce/comingsoon-react/static/js/main.f424a9d4.js",
     "static/js/27.f3101c3e.chunk.js": "/1comce/comingsoon-react/static/js/27.f3101c3e.chunk.js",
     "static/media/banner.jpg": "/1comce/comingsoon-react/static/media/banner.0059f9984405a5b5c657.jpg",
     "index.html": "/1comce/comingsoon-react/index.html"
   },
   "entrypoints": [
     "static/css/main.3d2ceda7.css",
-    "static/js/main.809f3056.js"
+    "static/js/main.f424a9d4.js"
   ]
 }
